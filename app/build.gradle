@@ -63,6 +63,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-compose:2.6.2"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2"
     implementation "com.google.dagger:hilt-android:2.44"
+    implementation files('../../MPLibraries/MVVMLibrary/build/outputs/aar/MVVMLibrary-debug.aar')
 
 
     kapt "com.google.dagger:hilt-compiler:2.44"
