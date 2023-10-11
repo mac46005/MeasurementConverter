@@ -7,8 +7,11 @@ import com.preciado.mvvmlibrary.navigation.util.CreateRoute
 
 sealed class Screen(
     override val baseRoute: String,
-    override val arguments: List<IArgument>?
+    override var arguments: List<IArgument>? = null
 ) : IScreen {
+
+    object Home: Screen("home")
+
     override fun fullRoute(): String {
         return CreateRoute.fullRoute(baseRoute, arguments)
     }
