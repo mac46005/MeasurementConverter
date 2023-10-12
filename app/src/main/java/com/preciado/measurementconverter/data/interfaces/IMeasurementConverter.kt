@@ -1,8 +1,8 @@
 package com.preciado.measurementconverter.data.interfaces
 
 interface IMeasurementConverter{
-    var Unit1: IMeasurementType
-    var Unit2: IMeasurementType
+    var Unit1: IMeasurementUnit
+    var Unit2: IMeasurementUnit
 
-    fun convert(): Double
+    fun convert()
 }
