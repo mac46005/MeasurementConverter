@@ -11,7 +11,7 @@ sealed class Screen(
 ) : IScreen {
 
     object Home: Screen("home")
-    object ConvertTemperatures: Screen("temperature")
+    object ConvertTemperatures: Screen("convert_temperatures")
     override fun fullRoute(): String {
         return CreateRoute.fullRoute(baseRoute, arguments)
     }

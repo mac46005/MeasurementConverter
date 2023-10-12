@@ -80,14 +80,14 @@ class Temperatures: IMeasurementConverter {
             //fahrenheit to celsius
             //(°F − 32) × 5/9 = 0°C
             private fun convertFahrenheitToCelsius(): Celsius {
-                var celsius = Celsius()
+                val celsius = Celsius()
                 celsius.value = (this.value - 32.0) * 5/9
                 return celsius
             }
 
             //(0°F − 32) × 5/9 + 273.15
             private fun convertFahrenheitToKelvin(): Kelvin{
-                var kelvin = Kelvin()
+                val kelvin = Kelvin()
                 kelvin.value = (this.value - 32) + (5/9) + 273.15
                 return kelvin
             }
@@ -108,19 +108,19 @@ class Temperatures: IMeasurementConverter {
                         convertedUnit = convertCelsiusToKelvin()
                     }
                 }
-                return this
+                return convertedUnit
             }
             //celsius to fahrenheit
             //(0°C × 9/5) + 32 = 32°F
             private fun convertCelsiusToFahrenheit(): Fahrenheit{
-                var fahrenheit = Fahrenheit()
+                val fahrenheit = Fahrenheit()
                 fahrenheit.value = (value * (9/5)) + 32
                 return fahrenheit
             }
 
             //0°C + 273.15
             private fun convertCelsiusToKelvin(): Kelvin{
-                var kelvin = Kelvin()
+                val kelvin = Kelvin()
                 kelvin.value = value + 273.15
                 return kelvin
             }
@@ -139,18 +139,19 @@ class Temperatures: IMeasurementConverter {
                         convertedUnit = convertKelvinToCelsius()
                     }
                 }
+                return convertedUnit
             }
 
             //(0K − 273.15) × 9/5 + 32
             private fun convertKelvinToFahrenheit(): Fahrenheit{
-                var fahrenheit = Fahrenheit()
+                val fahrenheit = Fahrenheit()
                 fahrenheit.value = (value - 273.15) * (9/5) + 32
                 return fahrenheit
             }
 
             //0K − 273.15
             private fun convertKelvinToCelsius(): Celsius{
-                var celsius = Celsius()
+                val celsius = Celsius()
                 celsius.value = value - 273.15
                 return celsius
             }
