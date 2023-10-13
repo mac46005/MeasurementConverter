@@ -43,5 +43,6 @@ fun Home(
 fun PreviewHome(){
     Home(
         navController = rememberNavController()
+
     )
 }

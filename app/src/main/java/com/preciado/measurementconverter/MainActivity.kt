@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = Screen.Home.toString()){
                     composable(Screen.Home.toString()){
+
                         Home(navController = navController)
                     }
                 }
