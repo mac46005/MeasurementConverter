@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -15,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.preciado.measurementconverter.R
 import com.preciado.measurementconverter.data.interfaces.IMeasurementUnit
-import com.preciado.measurementconverter.data.models.Temperatures
+import com.preciado.measurementconverter.data.models.TemperatureConverter
 import com.preciado.measurementconverter.ui.components.fields.FieldDropDown
 
 @Composable
@@ -61,9 +60,9 @@ fun PreviewMeasurementFieldDropDown(){
 
     MeasurementFieldDropDown(
         dropDownList = listOf(
-            Temperatures.TemperatureUnit.Celsius(),
-            Temperatures.TemperatureUnit.Fahrenheit(),
-            Temperatures.TemperatureUnit.Kelvin()
+            TemperatureConverter.TemperatureUnit.Celsius(),
+            TemperatureConverter.TemperatureUnit.Fahrenheit(),
+            TemperatureConverter.TemperatureUnit.Kelvin()
         ),
         selectedMeasurementUnitState = muState
     )

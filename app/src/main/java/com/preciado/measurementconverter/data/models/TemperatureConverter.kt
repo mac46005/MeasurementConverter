@@ -2,20 +2,17 @@ package com.preciado.measurementconverter.data.models
 
 import com.preciado.measurementconverter.data.interfaces.IMeasurementConverter
 import com.preciado.measurementconverter.data.interfaces.IMeasurementUnit
+import javax.inject.Inject
 
-class Temperatures: IMeasurementConverter {
-    override var Unit1: IMeasurementUnit = TemperatureUnit.Fahrenheit()
-
-
-    override var Unit2: IMeasurementUnit = TemperatureUnit.Celsius()
+class TemperatureConverter @Inject constructor(): IMeasurementConverter {
 
 
 
 
-    override fun convert(){
-        when(Unit1){
+    override fun convert(from: IMeasurementUnit, to: IMeasurementUnit){
+        when(from){
             is TemperatureUnit.Fahrenheit -> {
-                Unit2 = (Unit1 as TemperatureUnit.Fahrenheit).convertTo(Unit2)
+                to = (from as TemperatureUnit.Fahrenheit).convertTo(Unit2)
             }
             is TemperatureUnit.Celsius -> {
                 Unit2 = (Unit1 as TemperatureUnit.Celsius).convertTo(Unit2)
@@ -29,17 +26,59 @@ class Temperatures: IMeasurementConverter {
 
 
 
+    private fun convertFahrenheitToCelsius(fahrenheit: TemperatureUnit.Fahrenheit): TemperatureUnit.Celsius {
+        val celsius = TemperatureUnit.Celsius()
+        celsius.value = (fahrenheit.value - 32.0) * 5/9
+        return celsius
+    }
+
+    //(0°F − 32) × 5/9 + 273.15
+    private fun convertFahrenheitToKelvin(fahrenheit: TemperatureUnit.Fahrenheit): TemperatureUnit.Kelvin {
+        val kelvin = TemperatureUnit.Kelvin()
+        kelvin.value = (fahrenheit.value - 32) + (5/9) + 273.15
+        return kelvin
+    }
 
 
 
 
 
+    private fun convertCelsiusToFahrenheit(celsius: TemperatureUnit.Celsius): TemperatureUnit.Fahrenheit {
+        val fahrenheit = TemperatureUnit.Fahrenheit()
+        fahrenheit.value = (celsius.value * (9/5)) + 32
+        return fahrenheit
+    }
+
+    //0°C + 273.15
+    private fun convertCelsiusToKelvin(celsius: TemperatureUnit.Celsius): TemperatureUnit.Kelvin {
+        val kelvin = TemperatureUnit.Kelvin()
+        kelvin.value = celsius.value + 273.15
+        return kelvin
+    }
+
+    private fun convertKelvinToFahrenheit(kelvin: TemperatureUnit.Kelvin): TemperatureUnit.Fahrenheit {
+        val fahrenheit = TemperatureUnit.Fahrenheit()
+        fahrenheit.value = (kelvin.value - 273.15) * (9/5) + 32
+        return fahrenheit
+    }
+
+    //0K − 273.15
+    private fun convertKelvinToCelsius(kelvin: TemperatureUnit.Kelvin): TemperatureUnit.Celsius {
+        val celsius = TemperatureUnit.Celsius()
+        celsius.value = kelvin.value - 273.15
+        return celsius
+    }
 
 
 
 
-
-
+    private fun convertFromFahrenheit(value: Double,to: IMeasurementUnit): IMeasurementUnit{
+        when(to){
+            is TemperatureUnit.Celsius -> {
+                
+            }
+        }
+    }
 
 
 
