@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 fun <T> FieldDropDown(
     modifier: Modifier = Modifier,
     dropDownList: List<T>,
-    selectedItemState: MutableState<T?> = mutableStateOf(null),
+    selectedItemState: MutableState<T?>,
     surfaceTextFieldModifier: Modifier = Modifier,
     surfaceTextFieldShape: Shape = RoundedCornerShape(10.dp),
     surfaceTextFieldColor: Color = Color.White,
@@ -124,8 +124,16 @@ fun <T> FieldDropDown(
 fun PreviewFieldDropDown(
 
 ) {
+
+    var state = remember{
+        mutableStateOf<String?>("")
+    }
+
     FieldDropDown<String>(
-        dropDownList = listOf<String>("Hello"),
+        dropDownList = listOf(
+            "Helllo"
+        ),
+        selectedItemState = state,
         buttonContent = {
 
         },
