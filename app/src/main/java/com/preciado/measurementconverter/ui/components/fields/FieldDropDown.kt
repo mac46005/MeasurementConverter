@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -22,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,8 +55,8 @@ fun <T> FieldDropDown(
     dropDownItemBoxContentAlignment: Alignment = Alignment.CenterStart,
     dropDownItemBoxPropagateMinConstraints: Boolean = false,
     dropDownItemBoxContent: @Composable() (BoxScope.(T) -> Unit),
-    placeHolder: @Composable (RowScope.() -> Unit),
-    itemContent: @Composable (RowScope.(T) -> Unit),
+    placeHolder: @Composable (BoxScope.() -> Unit),
+    itemContent: @Composable (BoxScope.(T) -> Unit),
 ) {
     val selectedItem = remember{ selectedItemState }
 
@@ -75,9 +77,20 @@ fun <T> FieldDropDown(
             border = surfaceTextFieldBorder
         ) {
             if(selectedItem.value != null){
-                itemContent(this, selectedItem.value!!)
+                Box(
+                    modifier = Modifier.height(30.dp),
+                    contentAlignment = Alignment.Center
+                ){
+                    itemContent(this, selectedItem.value!!)
+                }
+
             }else{
-                placeHolder(this)
+                Box(
+                    modifier = Modifier.height(30.dp),
+                    contentAlignment = Alignment.Center
+                ){
+                    placeHolder(this)
+                }
             }
         }
 
@@ -119,6 +132,12 @@ fun <T> FieldDropDown(
     }
 }
 
+
+
+
+
+
+
 @Preview
 @Composable
 fun PreviewFieldDropDown(
@@ -126,7 +145,7 @@ fun PreviewFieldDropDown(
 ) {
 
     var state = remember{
-        mutableStateOf<String?>("")
+        mutableStateOf<String?>(null)
     }
 
     FieldDropDown<String>(

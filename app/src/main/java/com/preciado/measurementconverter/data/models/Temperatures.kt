@@ -55,7 +55,7 @@ class Temperatures: IMeasurementConverter {
 
 
 
-    sealed class TemperatureUnit: IMeasurementUnit{
+    sealed class TemperatureUnit(override var name: String): IMeasurementUnit{
         override var value: Double = 0.0
 
 
@@ -63,8 +63,9 @@ class Temperatures: IMeasurementConverter {
 
 
 
-        class Fahrenheit: TemperatureUnit(){
+        class Fahrenheit: TemperatureUnit("Fahrenheit"){
             override var value: Double = 0.0
+
             override fun convertTo(measurementType: IMeasurementUnit): IMeasurementUnit {
                 var convertedUnit: IMeasurementUnit = this
                 when(measurementType){
@@ -96,7 +97,7 @@ class Temperatures: IMeasurementConverter {
 
 
 
-        class Celsius: TemperatureUnit(){
+        class Celsius: TemperatureUnit("Celsius"){
             override var value: Double = 0.0
             override fun convertTo(measurementType: IMeasurementUnit): IMeasurementUnit {
                 var convertedUnit: IMeasurementUnit = this
@@ -127,7 +128,7 @@ class Temperatures: IMeasurementConverter {
 
         }
 
-        class Kelvin: TemperatureUnit(){
+        class Kelvin: TemperatureUnit("Kelvin"){
             override var value: Double = 0.0
             override fun convertTo(measurementType: IMeasurementUnit): IMeasurementUnit {
                 var convertedUnit: IMeasurementUnit = this
