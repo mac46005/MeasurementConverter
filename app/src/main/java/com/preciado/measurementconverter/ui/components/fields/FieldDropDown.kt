@@ -35,6 +35,7 @@ fun <T> FieldDropDown(
     modifier: Modifier = Modifier,
     dropDownList: List<T>,
     selectedItemState: MutableState<T?>,
+
     surfaceTextFieldModifier: Modifier = Modifier,
     surfaceTextFieldShape: Shape = RoundedCornerShape(10.dp),
     surfaceTextFieldColor: Color = Color.White,
@@ -57,6 +58,7 @@ fun <T> FieldDropDown(
     dropDownItemBoxContent: @Composable() (BoxScope.(T) -> Unit),
     placeHolder: @Composable (BoxScope.() -> Unit),
     itemContent: @Composable (BoxScope.(T) -> Unit),
+    onItemSelected: (T) -> Unit,
 ) {
     val selectedItem = remember{ selectedItemState }
 
@@ -122,6 +124,7 @@ fun <T> FieldDropDown(
                 modifier =dropDownItemBoxModifier.clickable {
                     selectedItem.value = item
                     isExpanded.value = false
+
                 },
                 contentAlignment = dropDownItemBoxContentAlignment,
                 propagateMinConstraints = dropDownItemBoxPropagateMinConstraints
@@ -161,6 +164,9 @@ fun PreviewFieldDropDown(
         },
         placeHolder = {
             Text(text = "No item selected")
+        },
+        itemContent = {
+
         }
     ) {
 

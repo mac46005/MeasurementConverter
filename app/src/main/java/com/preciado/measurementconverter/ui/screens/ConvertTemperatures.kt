@@ -11,6 +11,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.preciado.measurementconverter.data.interfaces.IMeasurementUnit
+import com.preciado.measurementconverter.data.models.Celsius
+import com.preciado.measurementconverter.data.models.Fahrenheit
+import com.preciado.measurementconverter.data.models.Kelvin
 import com.preciado.measurementconverter.data.models.TemperatureConverter
 import com.preciado.measurementconverter.ui.components.bars.TopBar
 import com.preciado.measurementconverter.ui.components.fields.theme.MeasurementFieldDropDown
@@ -30,13 +33,17 @@ fun ConvertTemperatures(
 
 
         val measurement1 = remember{
-            mutableStateOf<IMeasurementUnit?>(TemperatureConverter.TemperatureUnit.Fahrenheit())
+            mutableStateOf<IMeasurementUnit?>(Fahrenheit())
         }
 
 
         //TODO Make this a separate composable
         MeasurementFieldDropDown(
-            dropDownList = ,
+            dropDownList = listOf(
+                Fahrenheit(),
+                Celsius(),
+                Kelvin()
+            ),
             selectedMeasurementUnitState = measurement1
         )
 
@@ -46,10 +53,16 @@ fun ConvertTemperatures(
 
 
         val measurement2 = remember{
-            mutableStateOf<IMeasurementUnit?>(TemperatureConverter.TemperatureUnit.Celsius())
+            mutableStateOf<IMeasurementUnit?>(Celsius())
         }
+
+
         MeasurementFieldDropDown(
-            dropDownList = ,
+            dropDownList = listOf(
+                Fahrenheit(),
+                Celsius(),
+                Kelvin()
+            ),
             selectedMeasurementUnitState = measurement2
         )
 

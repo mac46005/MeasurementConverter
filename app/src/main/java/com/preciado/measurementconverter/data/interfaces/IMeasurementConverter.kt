@@ -1,5 +1,5 @@
 package com.preciado.measurementconverter.data.interfaces
 
-interface IMeasurementConverter{
-    fun convert(from: IMeasurementUnit, to: IMeasurementUnit)
+interface IMeasurementConverter<T: IMeasurementUnit>{
+    fun convert(from: T, to: T)
 }
