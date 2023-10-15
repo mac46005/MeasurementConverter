@@ -21,12 +21,11 @@ import com.preciado.measurementconverter.ui.components.fields.FieldDropDown
 fun MeasurementFieldDropDown(
     modifier: Modifier = Modifier,
     dropDownList: List<IMeasurementUnit>,
-    selectedMeasurementUnitState: MutableState<IMeasurementUnit?>
+    onSelectedItem: (IMeasurementUnit) -> Unit,
 ) {
     FieldDropDown<IMeasurementUnit>(
         modifier = modifier,
         dropDownList = dropDownList,
-        selectedItemState = selectedMeasurementUnitState,
         surfaceTextFieldShape = RoundedCornerShape(topStart = 5.dp, bottomStart = 5.dp),
         buttonModifier = Modifier.height(30.dp),
         buttonShape = RoundedCornerShape(topEnd = 5.dp, bottomEnd = 5.dp),
@@ -49,7 +48,7 @@ fun MeasurementFieldDropDown(
             )
         }
     ) {
-
+        onSelectedItem(it)
     }
 }
 
@@ -63,6 +62,6 @@ fun PreviewMeasurementFieldDropDown(){
 
     MeasurementFieldDropDown(
         dropDownList = listOf(),
-        selectedMeasurementUnitState = muState
+        onSelectedItem = {}
     )
 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlin.math.min
 
 @Composable
 fun TextField(
@@ -51,7 +52,7 @@ fun TextField(
     onValueChange: (String) -> Unit
 ) {
     BasicTextField(
-        modifier = modifier.defaultMinSize(minWidth = 150.dp),
+        modifier = modifier.defaultMinSize(minWidth = 150.dp).padding(vertical = 5.dp),
         value = value,
         onValueChange = onValueChange,
         enabled = enabled,

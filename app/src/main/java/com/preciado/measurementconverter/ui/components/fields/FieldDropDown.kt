@@ -34,8 +34,6 @@ import androidx.compose.ui.unit.dp
 fun <T> FieldDropDown(
     modifier: Modifier = Modifier,
     dropDownList: List<T>,
-    selectedItemState: MutableState<T?>,
-
     surfaceTextFieldModifier: Modifier = Modifier,
     surfaceTextFieldShape: Shape = RoundedCornerShape(10.dp),
     surfaceTextFieldColor: Color = Color.White,
@@ -60,7 +58,10 @@ fun <T> FieldDropDown(
     itemContent: @Composable (BoxScope.(T) -> Unit),
     onItemSelected: (T) -> Unit,
 ) {
-    val selectedItem = remember{ selectedItemState }
+
+    val selectedItemState = remember{
+        mutableStateOf<T?>(null)
+    }
 
     var isExpanded = remember{
         mutableStateOf(false)
@@ -78,12 +79,12 @@ fun <T> FieldDropDown(
             shadowElevation = surfaceTextFieldShadowElevation,
             border = surfaceTextFieldBorder
         ) {
-            if(selectedItem.value != null){
+            if(selectedItemState.value != null){
                 Box(
                     modifier = Modifier.height(30.dp),
                     contentAlignment = Alignment.Center
                 ){
-                    itemContent(this, selectedItem.value!!)
+                    itemContent(this, selectedItemState.value!!)
                 }
 
             }else{
@@ -122,9 +123,9 @@ fun <T> FieldDropDown(
         for(item in dropDownList){
             Box(
                 modifier =dropDownItemBoxModifier.clickable {
-                    selectedItem.value = item
+                    selectedItemState.value = item
                     isExpanded.value = false
-
+                    onItemSelected(selectedItemState.value!!)
                 },
                 contentAlignment = dropDownItemBoxContentAlignment,
                 propagateMinConstraints = dropDownItemBoxPropagateMinConstraints
@@ -155,7 +156,6 @@ fun PreviewFieldDropDown(
         dropDownList = listOf(
             "Helllo"
         ),
-        selectedItemState = state,
         buttonContent = {
 
         },
