@@ -2,6 +2,8 @@ package com.preciado.measurementconverter.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.preciado.measurementconverter.data.models.Celsius
 import com.preciado.measurementconverter.data.models.Fahrenheit
 import com.preciado.measurementconverter.data.models.TemperatureConverter
@@ -14,7 +16,7 @@ import javax.inject.Inject
 class ConvertTemperaturesViewModel @Inject constructor(
     private val temperatureConverter: TemperatureConverter,
     private val temperatures: Temperatures,
-) {
+) : ViewModel(){
     val _tempUnit1: MutableLiveData<TemperatureUnit> = MutableLiveData(Fahrenheit())
     val tempUnit1: LiveData<TemperatureUnit> = _tempUnit1
 

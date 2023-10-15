@@ -41,12 +41,15 @@ fun MeasurementFieldDropDown(
                 modifier = Modifier.padding(5.dp),
                 text = "Please select a measurement unit"
             )
+        },
+        itemContent = {
+            DropDownTextContent(
+                modifier = Modifier.padding(5.dp),
+                text = it.name
+            )
         }
     ) {
-        DropDownTextContent(
-            modifier = Modifier.padding(5.dp),
-            text = it.name
-        )
+
     }
 }
 
@@ -59,11 +62,7 @@ fun PreviewMeasurementFieldDropDown(){
     }
 
     MeasurementFieldDropDown(
-        dropDownList = listOf(
-            TemperatureConverter.TemperatureUnit.Celsius(),
-            TemperatureConverter.TemperatureUnit.Fahrenheit(),
-            TemperatureConverter.TemperatureUnit.Kelvin()
-        ),
+        dropDownList = listOf(),
         selectedMeasurementUnitState = muState
     )
 }

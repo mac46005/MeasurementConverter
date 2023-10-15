@@ -5,10 +5,11 @@ import com.preciado.measurementconverter.data.repo.Temperatures
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(ViewmodelModule::class)
-class ViewmodelModule {
+@InstallIn(ViewModelComponent::class)
+class ViewModelModule {
     @Provides
     fun providesTemperatures(): Temperatures{
         return Temperatures()
