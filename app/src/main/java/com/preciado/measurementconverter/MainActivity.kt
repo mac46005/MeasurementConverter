@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MeasurementConverterTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = Screen.Home.toString()){
+                NavHost(navController = navController, startDestination = Screen.Home.fullRoute()){
                     composable(Screen.Home.fullRoute()){
                         Home(navController = navController)
                     }
@@ -40,7 +40,8 @@ class MainActivity : ComponentActivity() {
                             onTempUnit1Selected = convertTemperaturesViewModel::setTempUnit1,
                             onTempUnit2Selected = convertTemperaturesViewModel::setTempUnit2,
                             setTemperature = convertTemperaturesViewModel::setTemperature,
-                            convertTemperatureUnit = convertTemperaturesViewModel::convertTemperatureUnit
+                            convertTemperatureUnit = convertTemperaturesViewModel::convertTemperatureUnit,
+                            result = convertTemperaturesViewModel.result
                         )
                     }
                 }

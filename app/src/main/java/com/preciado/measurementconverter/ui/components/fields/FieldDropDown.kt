@@ -18,12 +18,10 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,12 +48,12 @@ fun <T> FieldDropDown(
     buttonContentPadding: PaddingValues = PaddingValues(5.dp),
     buttonInteractionSource: MutableInteractionSource = MutableInteractionSource(),
     buttonContent: @Composable() (RowScope.() -> Unit),
-    dropDownItemBoxModifier: Modifier = Modifier,
-    dropDownItemBoxContentAlignment: Alignment = Alignment.CenterStart,
-    dropDownItemBoxPropagateMinConstraints: Boolean = false,
-    dropDownItemBoxContent: @Composable() (BoxScope.(T) -> Unit),
+    dropDownListItemBoxModifier: Modifier = Modifier,
+    dropDownListItemBoxContentAlignment: Alignment = Alignment.CenterStart,
+    dropDownListItemBoxPropagateMinConstraints: Boolean = false,
+    dropDownListItemBoxContent: @Composable() (BoxScope.(T) -> Unit),
     placeHolder: @Composable (BoxScope.() -> Unit),
-    itemContent: @Composable (BoxScope.(T) -> Unit),
+    selectedItemContent: @Composable (BoxScope.(T) -> Unit),
     onItemSelected: (T) -> Unit,
 ) {
 
@@ -84,7 +82,7 @@ fun <T> FieldDropDown(
                     modifier = Modifier.height(30.dp),
                     contentAlignment = Alignment.Center
                 ){
-                    itemContent(this, selectedItemState.value!!)
+                    selectedItemContent(this, selectedItemState.value!!)
                 }
 
             }else{
@@ -122,15 +120,15 @@ fun <T> FieldDropDown(
     ) {
         for(item in dropDownList){
             Box(
-                modifier =dropDownItemBoxModifier.clickable {
+                modifier =dropDownListItemBoxModifier.clickable {
                     selectedItemState.value = item
                     isExpanded.value = false
                     onItemSelected(selectedItemState.value!!)
                 },
-                contentAlignment = dropDownItemBoxContentAlignment,
-                propagateMinConstraints = dropDownItemBoxPropagateMinConstraints
+                contentAlignment = dropDownListItemBoxContentAlignment,
+                propagateMinConstraints = dropDownListItemBoxPropagateMinConstraints
             ) {
-                dropDownItemBoxContent(this, item)
+                dropDownListItemBoxContent(this, item)
             }
         }
     }
@@ -159,13 +157,13 @@ fun PreviewFieldDropDown(
         buttonContent = {
 
         },
-        dropDownItemBoxContent = {
+        dropDownListItemBoxContent = {
 
         },
         placeHolder = {
             Text(text = "No item selected")
         },
-        itemContent = {
+        selectedItemContent = {
 
         }
     ) {

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.painter.BrushPainter
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
@@ -38,7 +39,7 @@ fun TextField(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     onTextLayout: (TextLayoutResult) -> Unit = {},
     interactionSource: MutableInteractionSource = MutableInteractionSource(),
-    cursorBrush: Brush = Brush.verticalGradient(listOf(Color.Black)),
+    cursorBrush: Brush = Brush.verticalGradient(listOf(Color.Black,Color.Black), endY = 1f),
     surfaceModifier: Modifier = Modifier,
     surfaceShape: Shape = RoundedCornerShape(5.dp),
     surfaceColor: Color = Color.White,

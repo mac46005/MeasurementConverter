@@ -7,12 +7,16 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.preciado.measurementconverter.data.models.TemperatureUnit
@@ -27,7 +31,8 @@ fun ConvertTemperaturesScreen(
     onTempUnit1Selected: (TemperatureUnit) -> Unit,
     onTempUnit2Selected: (TemperatureUnit) -> Unit,
     setTemperature: (Double) -> Unit,
-    convertTemperatureUnit: () -> Unit
+    convertTemperatureUnit: () -> Unit,
+    result: LiveData<Double>
 ){
     Column (modifier = modifier.fillMaxSize()){
         TopBar()
@@ -50,6 +55,7 @@ fun ConvertTemperaturesScreen(
             val textState = remember{
                 mutableStateOf("")
             }
+            //TODO Find out how i can catch NumberFormatException
             TextField(
                 value = textState.value,
                 onValueChange = {
@@ -80,9 +86,9 @@ fun ConvertTemperaturesScreen(
         }
 
 
-
+        val resultState by result.observeAsState(initial = 0.0)
         Text(text = "Result")
-        Text(text = "33.6")
+        Text(text = result.toString())
         Text(text = "1 Celsius = 33.8")
     }
 }
@@ -95,6 +101,7 @@ fun PreviewConvertTemperatures(){
         onTempUnit1Selected = {},
         onTempUnit2Selected = {},
         setTemperature = {},
-        convertTemperatureUnit = {}
+        convertTemperatureUnit = {},
+        result = MutableLiveData(0.0)
     )
 }
