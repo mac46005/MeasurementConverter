@@ -37,11 +37,6 @@ class MainActivity : ComponentActivity() {
                         val convertTemperaturesViewModel: ConvertTemperaturesViewModel = hiltViewModel()
                         ConvertTemperaturesScreen(
                             navController = navController,
-                            onTempUnit1Selected = convertTemperaturesViewModel::setTempUnit1,
-                            onTempUnit2Selected = convertTemperaturesViewModel::setTempUnit2,
-                            setTemperature = convertTemperaturesViewModel::setTemperature,
-                            convertTemperatureUnit = convertTemperaturesViewModel::convertTemperatureUnit,
-                            result = convertTemperaturesViewModel.result
                         )
                     }
                 }
