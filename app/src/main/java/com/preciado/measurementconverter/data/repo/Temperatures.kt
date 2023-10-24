@@ -1,10 +1,9 @@
 package com.preciado.measurementconverter.data.repo
 
-import com.preciado.measurementconverter.data.models.Celsius
-import com.preciado.measurementconverter.data.models.Fahrenheit
-import com.preciado.measurementconverter.data.models.Kelvin
-import com.preciado.measurementconverter.data.models.TemperatureUnit
-import javax.inject.Inject
+import com.preciado.measurementconverter.data.models.temperatures.Celsius
+import com.preciado.measurementconverter.data.models.temperatures.Fahrenheit
+import com.preciado.measurementconverter.data.models.temperatures.Kelvin
+import com.preciado.measurementconverter.data.models.temperatures.TemperatureUnit
 
 class Temperatures{
     fun getTemperatures(): List<TemperatureUnit>{

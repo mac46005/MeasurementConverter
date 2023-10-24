@@ -1,4 +1,4 @@
-package com.preciado.measurementconverter.data.models
+package com.preciado.measurementconverter.data.models.temperatures
 
 class Kelvin: TemperatureUnit("Kelvin"){
     override var value: Double = 0.0

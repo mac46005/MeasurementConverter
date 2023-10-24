@@ -1,4 +1,4 @@
-package com.preciado.measurementconverter.data.models
+package com.preciado.measurementconverter.data.models.temperatures
 
 import com.preciado.measurementconverter.data.interfaces.IMeasurementUnit
 

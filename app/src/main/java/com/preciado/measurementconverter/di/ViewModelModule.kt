@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.di
 
-import com.preciado.measurementconverter.data.models.TemperatureConverter
+import com.preciado.measurementconverter.data.models.temperatures.TemperatureConverter
 import com.preciado.measurementconverter.data.repo.Temperatures
 import dagger.Module
 import dagger.Provides
@@ -16,7 +16,7 @@ class ViewModelModule {
     }
 
     @Provides
-    fun providesTemperatureConverter(): TemperatureConverter{
+    fun providesTemperatureConverter(): TemperatureConverter {
         return TemperatureConverter()
     }
 }

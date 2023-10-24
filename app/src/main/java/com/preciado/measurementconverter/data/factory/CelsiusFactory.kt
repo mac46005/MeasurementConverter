@@ -1,10 +1,10 @@
 package com.preciado.measurementconverter.data.factory
 
-import com.preciado.measurementconverter.data.interfaces.IMeasurementUnit
-import com.preciado.measurementconverter.data.models.Celsius
+import com.preciado.measurementconverter.data.models.temperatures.Celsius
+import javax.inject.Inject
 
-class CelsiusFactory: IFactory<IMeasurementUnit> {
-    override fun build(vararg params: Any?): IMeasurementUnit {
+class CelsiusFactory @Inject constructor(): IFactory<Celsius> {
+    override fun build(vararg params: Any?): Celsius {
         return Celsius()
     }
 

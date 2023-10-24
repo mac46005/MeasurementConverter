@@ -3,48 +3,27 @@ package com.preciado.measurementconverter.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.preciado.measurementconverter.data.models.Celsius
-import com.preciado.measurementconverter.data.models.Fahrenheit
-import com.preciado.measurementconverter.data.models.TemperatureConverter
-import com.preciado.measurementconverter.data.models.TemperatureUnit
-import com.preciado.measurementconverter.data.repo.Temperatures
+import com.preciado.measurementconverter.data.factory.TemperatureUnitFactory
+import com.preciado.measurementconverter.data.models.temperatures.TemperatureConverter
+import com.preciado.measurementconverter.data.models.temperatures.TemperatureUnits
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class ConvertTemperaturesViewModel @Inject constructor(
     private val temperatureConverter: TemperatureConverter,
-    private val temperatures: Temperatures,
+    private val temperatureUnitFactory: TemperatureUnitFactory
 ) : ViewModel(){
 
-    private val _tempUnit1: MutableLiveData<TemperatureUnit> = MutableLiveData(Fahrenheit())
-    val tempUnit1: LiveData<TemperatureUnit> = _tempUnit1
-
-    private val _tempUnit2: MutableLiveData<TemperatureUnit> = MutableLiveData(Celsius())
-    val tempUnit2: LiveData<TemperatureUnit> = _tempUnit2
-
-    private val _temperature: MutableLiveData<Double> = MutableLiveData(0.0)
-    val temperature: LiveData<Double> = _temperature
 
 
-    private val _result: MutableLiveData<Double> = MutableLiveData(0.0)
+    val _result: MutableLiveData<Double> = MutableLiveData(0.0)
     val result: LiveData<Double> = _result
-    fun setTemperature(value: Double){
-        _temperature.value = value
-    }
-    fun setTempUnit1(unit: TemperatureUnit){
-        _tempUnit1.value = unit
-    }
-    fun setTempUnit2(unit: TemperatureUnit){
-        _tempUnit2.value = unit
-    }
 
-    fun setResult(value: Double){
-        _result.value = value
+    fun submit(unit1Enum: TemperatureUnits, unit2Enum: TemperatureUnits, value: String){
+        val unit1 = temperatureUnitFactory.build(unit1Enum)
+        unit1.value = value.toDouble()
+        val unit2 = temperatureConverter.convert(unit1, unit2Enum)
+        _result.value = unit2.value
     }
-
-    fun convertTemperatureUnit(){
-        temperatureConverter.convert(_tempUnit1.value!!, _tempUnit2.value!!)
-    }
-
 }
