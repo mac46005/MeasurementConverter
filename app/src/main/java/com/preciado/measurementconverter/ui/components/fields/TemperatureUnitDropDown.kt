@@ -18,11 +18,12 @@ import com.preciado.measurementconverter.data.models.temperatures.TemperatureUni
 
 @Composable
 fun TemperatureUnitDropDown(
-    selectedItem: MutableState<TemperatureUnits>
+    selectedItem: TemperatureUnits,
+    onValueChange: (TemperatureUnits) -> Unit
 ) {
     Row() {
         val selectedItemState = remember{
-            selectedItem
+            mutableStateOf(selectedItem)
         }
         Text(text = selectedItemState.value.name)
         val isExpanded = remember{ mutableStateOf(false)}
@@ -38,7 +39,8 @@ fun TemperatureUnitDropDown(
         }) {
             for(item in TemperatureUnits.values()){
                 Box(modifier = Modifier.clickable {
-                    selectedItem.value = item
+                    selectedItemState.value = item
+                    onValueChange(item)
                     isExpanded.value = false
                 }){
                     Text(text = item.name)
