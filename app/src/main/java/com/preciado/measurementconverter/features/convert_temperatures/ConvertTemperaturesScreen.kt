@@ -1,4 +1,4 @@
-package com.preciado.measurementconverter.ui.screens
+package com.preciado.measurementconverter.features.convert_temperatures
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

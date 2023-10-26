@@ -1,4 +1,4 @@
-package com.preciado.measurementconverter.viewmodel
+package com.preciado.measurementconverter.features.convert_temperatures
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -3,9 +3,6 @@ package com.preciado.measurementconverter
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,10 +12,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.preciado.measurementconverter.ui.navigation.Screen
-import com.preciado.measurementconverter.ui.screens.ConvertTemperaturesScreen
-import com.preciado.measurementconverter.ui.screens.Home
+import com.preciado.measurementconverter.features.convert_temperatures.ConvertTemperaturesScreen
+import com.preciado.measurementconverter.features.home.domain.Home
 import com.preciado.measurementconverter.ui.theme.MeasurementConverterTheme
-import com.preciado.measurementconverter.viewmodel.ConvertTemperaturesViewModel
+import com.preciado.measurementconverter.features.convert_temperatures.ConvertTemperaturesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

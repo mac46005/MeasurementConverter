@@ -1,4 +1,4 @@
-package com.preciado.measurementconverter.ui.screens
+package com.preciado.measurementconverter.features.home.domain
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
