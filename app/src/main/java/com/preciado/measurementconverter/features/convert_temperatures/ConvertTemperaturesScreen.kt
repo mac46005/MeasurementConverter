@@ -45,14 +45,15 @@ fun ConvertTemperaturesScreen(
     LaunchedEffect(key1 = context){
         validationEvents.collect{event ->
             when(event){
-                ValidationEvent.Success -> {
+                is ValidationEvent.Success -> {
                     Toast.makeText(
                         context,
                         "Successfully converted ${state.unit1.name} to ${state.unit2.name}",
                         Toast.LENGTH_LONG
                     ).show()
                 }
-                ValidationEvent.UnSuccessful -> {
+
+                is ValidationEvent.UnSuccessful -> {
                     Toast.makeText(
                         context,
                         "There are errors in the form",

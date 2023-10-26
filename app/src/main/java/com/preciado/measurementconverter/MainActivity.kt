@@ -35,6 +35,7 @@ class MainActivity : ComponentActivity() {
                         ConvertTemperaturesScreen(
                             navController = navController,
                             state = convertTemperaturesViewModel.state,
+                            validationEvents = convertTemperaturesViewModel.validationEvents,
                             onEvent = convertTemperaturesViewModel::onEvent
                         )
                     }

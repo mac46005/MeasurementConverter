@@ -1,8 +1,9 @@
 package com.preciado.measurementconverter.features.convert_temperatures.domain.use_case
 
 import java.lang.NumberFormatException
+import javax.inject.Inject
 
-class ValidateTemperature {
+class ValidateTemperature @Inject constructor() {
     fun execute(temperature: String): ValidationResult{
         try{
             if(temperature.isBlank()){
