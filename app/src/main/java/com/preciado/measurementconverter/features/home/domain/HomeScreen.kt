@@ -48,7 +48,11 @@ fun Home(
                                     navController.navigate(Screen.ConvertTemperatures.fullRoute())
                                 }
                         ) {
-                            Icon(, contentDescription = "")
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_action_temp),
+                                contentDescription = "Temp icon",
+                                modifier = Modifier.height(100.dp).width(100.dp)
+                            )
                             Text(text = "Temperature")
                         }
                     }
