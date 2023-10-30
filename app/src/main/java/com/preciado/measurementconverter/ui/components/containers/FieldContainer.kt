@@ -35,13 +35,14 @@ fun FieldContainer(
             .padding(5.dp)
             .width(width)
             .height(height)
-            .border(1.dp, Color.Gray, RectangleShape)
+            .border(4.dp, Color.Gray, RectangleShape)
     ){
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.metal_background),
             contentDescription = "metal background",
-            contentScale = ContentScale.FillBounds
+            contentScale = ContentScale.FillBounds,
+            alpha = .6f
         )
 
         content(this)

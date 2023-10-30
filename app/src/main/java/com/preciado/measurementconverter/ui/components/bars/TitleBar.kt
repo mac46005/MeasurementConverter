@@ -13,7 +13,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,30 +33,65 @@ fun TitleBar(
                 Row {
                     Box(
                         modifier = Modifier
-                            .border(1.dp, Color.Gray)
                             .fillMaxWidth(.7f)
+                            .drawBehind {
+                                val y = size.height
+                                val x = size.width
+
+                                drawLine(
+                                    color = Color.Gray,
+                                    start = Offset(x, 0f),
+                                    end = Offset(x, y),
+                                    strokeWidth = 6f
+                                )
+
+                                drawLine(
+                                    color = Color.Gray,
+                                    start = Offset(0f, y),
+                                    end = Offset(x, y),
+                                    strokeWidth = 6f
+                                )
+                            },
+                        contentAlignment = Alignment.Center
                     ){
 
-                        Column(Modifier.padding(start = 30.dp, end = 5.dp)) {
+                        Column(
+                        ) {
                             Text(
                                 text = "Measurement Converter",
                                 fontSize = 25.sp,
                             )
-                            Divider()
+
                             if(subTitle != null){
+                                Divider()
                                 Text(text = subTitle)
                             }
                         }
                     }
+
+
+
                     Column(
-                        modifier = Modifier.fillMaxWidth().align(Alignment.Bottom),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.Bottom)
+                            .padding(start = 5.dp),
                     ) {
                         FadingDivider(
-                            modifier = Modifier.fillMaxWidth().height(2.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(4.dp)
+                                .padding(bottom = 2.dp)
+                            ,
                             color = Color.Red
                         )
-                        Divider()
+                        Divider(
+                            Modifier.height(2.dp)
+                        )
                     }
+
+
+
 
                 }
             }
