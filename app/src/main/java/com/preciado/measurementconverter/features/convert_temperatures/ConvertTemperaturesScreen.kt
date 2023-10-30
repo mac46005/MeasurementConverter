@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -66,13 +67,18 @@ fun ConvertTemperaturesScreen(
             }
 
             val fieldContainerModifier = Modifier.padding(5.dp)
-            Column (modifier = modifier.fillMaxSize()){
+
+            Column (
+                modifier = modifier.fillMaxSize()
+            ){
                 TitleBar(
                     modifier = Modifier.fillMaxWidth(),
                     subTitle = "Temperature"
                 )
 
-                FieldContainer() {
+                FieldContainer(
+                    height = 130.dp
+                ) {
                     Column(
                         fieldContainerModifier
                     ) {
@@ -107,7 +113,9 @@ fun ConvertTemperaturesScreen(
 
 
 
-                FieldContainer() {
+                FieldContainer(
+                    height = 100.dp
+                ) {
                     Column(
                         fieldContainerModifier
                     ) {

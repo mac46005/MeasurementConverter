@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -28,6 +29,7 @@ fun FieldContainer(
     modifier: Modifier = Modifier,
     width: Dp = 400.dp,
     height: Dp = 200.dp,
+    contentAlignment: Alignment = Alignment.CenterStart,
     content: @Composable (BoxScope.() -> Unit)
 ){
     Box(
@@ -35,7 +37,8 @@ fun FieldContainer(
             .padding(5.dp)
             .width(width)
             .height(height)
-            .border(4.dp, Color.Gray, RectangleShape)
+            .border(4.dp, Color.Gray, RectangleShape),
+        contentAlignment = contentAlignment
     ){
         Image(
             modifier = Modifier.fillMaxSize(),
