@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.preciado.measurementconverter.R
+import com.preciado.measurementconverter.features.home.components.MeasurementMenuItem
 import com.preciado.measurementconverter.ui.components.bars.TitleBar
 import com.preciado.measurementconverter.ui.components.bars.TopBar
 import com.preciado.measurementconverter.ui.navigation.Screen
@@ -39,21 +40,8 @@ fun Home(
                 Column(modifier = Modifier.fillMaxWidth()) {
 
                     Row(modifier) {
-                        Card(
-                            modifier =
-                            Modifier
-                                .height(200.dp)
-                                .width(200.dp)
-                                .clickable {
-                                    navController.navigate(Screen.ConvertTemperatures.fullRoute())
-                                }
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_action_temp),
-                                contentDescription = "Temp icon",
-                                modifier = Modifier.height(100.dp).width(100.dp)
-                            )
-                            Text(text = "Temperature")
+                        MeasurementMenuItem(id = R.drawable.tempgauge) {
+                            navController.navigate(Screen.ConvertTemperatures.fullRoute())
                         }
                     }
 
