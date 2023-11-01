@@ -2,7 +2,7 @@ package com.preciado.measurementconverter.data.models.lengths
 
 class Millimeter: LengthUnit("Millimeter"), IToLengthUnit {
     override fun toMillimeter(): Millimeter {
-        TODO("Not yet implemented")
+        return this
     }
 
     override fun toCentimeter(): Centimeter{
@@ -23,35 +23,51 @@ class Millimeter: LengthUnit("Millimeter"), IToLengthUnit {
     }
 
     override fun toDekameter(): Dekameter {
-        TODO("Not yet implemented")
+        val dekameter = Dekameter()
+        dekameter.value = value / 10000
+        return dekameter
     }
 
     override fun toHectometer(): Hectometer {
-        TODO("Not yet implemented")
+        val hectometer = Hectometer()
+        hectometer.value = value / 100000
+        return hectometer
     }
 
     override fun toKilometer(): Kilometer {
-        TODO("Not yet implemented")
+        val kilometer = Kilometer()
+        kilometer.value = value / 1000000
+        return kilometer
     }
 
     override fun toInch(): Inch {
-        TODO("Not yet implemented")
+        val inch = Inch()
+        inch.value = value / 25.4
+        return inch
     }
 
     override fun toFoot(): Foot {
-        TODO("Not yet implemented")
+        val foot = Foot()
+        foot.value = value / 304.8
+        return foot
     }
 
     override fun toMile(): Mile {
-        TODO("Not yet implemented")
+        val mile = Mile()
+        mile.value = value / 1.609e+6
+        return mile
     }
 
     override fun toYard(): Yard {
-        TODO("Not yet implemented")
+        val yard = Yard()
+        yard.value = value / 914.4
+        return yard
     }
 
     override fun toNauticalMile(): NauticalMile {
-        TODO("Not yet implemented")
+        val nauticalMile = NauticalMile()
+        nauticalMile.value = value / 1.852e+6
+        return nauticalMile
     }
 
 
