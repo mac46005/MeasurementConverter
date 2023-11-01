@@ -5,7 +5,7 @@ interface IToLengthUnit {
     fun toCentimeter(): Centimeter
     fun toDecimeter(): Decimeter
     fun toMeter(): Meter
-    fun toDekameter(): Dekameter
+    fun toDecameter(): Decameter
     fun toHectometer(): Hectometer
     fun toKilometer(): Kilometer
     fun toInch(): Inch

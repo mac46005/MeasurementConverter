@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.models.lengths
 
-class Dekameter: LengthUnit("Dekameter"), IToLengthUnit{
+class Decameter: LengthUnit("Dekameter"), IToLengthUnit{
     override fun toMillimeter(): Millimeter {
         val millimeter = Millimeter()
         millimeter.value = value * 10000
@@ -25,7 +25,7 @@ class Dekameter: LengthUnit("Dekameter"), IToLengthUnit{
         return meter
     }
 
-    override fun toDekameter(): Dekameter {
+    override fun toDecameter(): Decameter {
         return this
     }
 

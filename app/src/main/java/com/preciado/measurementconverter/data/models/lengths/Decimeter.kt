@@ -23,10 +23,10 @@ class Decimeter: LengthUnit("Decimeter"), IToLengthUnit{
         return meter
     }
 
-    override fun toDekameter(): Dekameter {
-        val dekameter = Dekameter()
-        dekameter.value = value / 100
-        return dekameter
+    override fun toDecameter(): Decameter {
+        val decameter = Decameter()
+        decameter.value = value / 100
+        return decameter
     }
 
     override fun toHectometer(): Hectometer {
