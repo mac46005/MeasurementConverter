@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.models.lengths
 
-class Inch: LengthUnit("Inch"), IToLengthUnit {
+class Inch: LengthUnit("Inch") {
     override fun toMillimeter(): Millimeter {
         val millimeter = Millimeter()
         millimeter.value = value * 25.4

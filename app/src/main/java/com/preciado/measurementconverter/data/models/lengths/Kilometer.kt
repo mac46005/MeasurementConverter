@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.models.lengths
 
-class Kilometer: LengthUnit(name = "Kilometer"), IToLengthUnit {
+class Kilometer: LengthUnit(name = "Kilometer"){
     override fun toMillimeter(): Millimeter {
         val millimeter = Millimeter()
         millimeter.value = value * 1000000

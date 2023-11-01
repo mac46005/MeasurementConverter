@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.models.lengths
 
-class Hectometer: LengthUnit("Hectometer"), IToLengthUnit{
+class Hectometer: LengthUnit("Hectometer"){
     override fun toMillimeter(): Millimeter {
         val millimeter = Millimeter()
         millimeter.value = value * 100000

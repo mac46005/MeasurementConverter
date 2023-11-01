@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.models.lengths
 
-class Foot: LengthUnit("Foot"), IToLengthUnit {
+class Foot: LengthUnit("Foot") {
     override fun toMillimeter(): Millimeter {
         val millimeter = Millimeter()
         millimeter.value = value * 304.8
