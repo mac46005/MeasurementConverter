@@ -12,12 +12,15 @@ import com.preciado.measurementconverter.ui.theme.MeasurementConverterTheme
 @Composable
 fun TopTitleScreen(
     modifier: Modifier = Modifier,
+    subTitle: String? = null,
     content: @Composable (ColumnScope.() -> Unit)
 ){
     MeasurementConverterTheme() {
         Surface() {
             Column(modifier = modifier) {
-                TitleBar()
+                TitleBar(
+                    subTitle = subTitle
+                )
                 content(this)
             }
         }

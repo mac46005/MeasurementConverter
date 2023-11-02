@@ -66,15 +66,13 @@ fun ConvertTemperaturesScreen(
 
 
 
-    TopTitleScreen(modifier = Modifier.fillMaxSize()) {
+    TopTitleScreen(
+        modifier = Modifier.fillMaxSize(),
+        subTitle = "Temperatures"
+    ) {
 
 
         val fieldContainerModifier = Modifier.padding(5.dp)
-
-        TitleBar(
-            modifier = Modifier.fillMaxWidth(),
-            subTitle = "Temperature"
-        )
 
         FieldContainer(
             height = 130.dp

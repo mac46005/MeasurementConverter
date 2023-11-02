@@ -3,6 +3,7 @@ package com.preciado.measurementconverter.features.convert_lengths
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,14 +18,15 @@ fun ConvertLengthsScreen(
     content: @Composable (ColumnScope.() -> Unit)
 ){
     TopTitleScreen() {
-        
+        content(this)
     }
 }
 
 @Preview
 @Composable
 fun PreviewConvertLengthsScreen(){
-    ConvertLengthsScreen{
-
+    ConvertLengthsScreen {
+        Text(text = "Your a bitch")
+        Text(text = "Another bitch")
     }
 }
