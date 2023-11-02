@@ -27,6 +27,7 @@ import com.preciado.measurementconverter.ui.components.containers.FieldContainer
 import com.preciado.measurementconverter.ui.components.fields.FieldButton
 import com.preciado.measurementconverter.ui.components.fields.TemperatureUnitDropDown
 import com.preciado.measurementconverter.ui.components.fields.theme.TextField
+import com.preciado.measurementconverter.ui.components.screens.TopTitleScreen
 import com.preciado.measurementconverter.ui.theme.MeasurementConverterTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
@@ -38,138 +39,132 @@ fun ConvertTemperaturesScreen(
     state: ConvertTemperatureFormState,
     validationEvents: Flow<ValidationEvent>,
     onEvent: (ConvertTemperatureFormEvent) -> Unit,
-){
-    MeasurementConverterTheme(
-        dynamicColor = false
-    ) {
-        Surface() {
-            val context = LocalContext.current
-            LaunchedEffect(key1 = context){
-                validationEvents.collect{event ->
-                    when(event){
-                        is ValidationEvent.Success -> {
-                            Toast.makeText(
-                                context,
-                                "Successfully converted ${state.unit1.name} to ${state.unit2.name}",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
+) {
 
-                        is ValidationEvent.UnSuccessful -> {
-                            Toast.makeText(
-                                context,
-                                "There are errors in the form",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }
+    val context = LocalContext.current
+    LaunchedEffect(key1 = context) {
+        validationEvents.collect { event ->
+            when (event) {
+                is ValidationEvent.Success -> {
+                    Toast.makeText(
+                        context,
+                        "Successfully converted ${state.unit1.name} to ${state.unit2.name}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                is ValidationEvent.UnSuccessful -> {
+                    Toast.makeText(
+                        context,
+                        "There are errors in the form",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
+        }
+    }
 
-            val fieldContainerModifier = Modifier.padding(5.dp)
 
-            Column (
-                modifier = modifier.fillMaxSize()
-            ){
-                TitleBar(
-                    modifier = Modifier.fillMaxWidth(),
-                    subTitle = "Temperature"
+
+    TopTitleScreen(modifier = Modifier.fillMaxSize()) {
+
+
+        val fieldContainerModifier = Modifier.padding(5.dp)
+
+        TitleBar(
+            modifier = Modifier.fillMaxWidth(),
+            subTitle = "Temperature"
+        )
+
+        FieldContainer(
+            height = 130.dp
+        ) {
+            Column(
+                fieldContainerModifier
+            ) {
+                Text(text = "From")
+
+
+                TemperatureUnitDropDown(
+                    selectedItem = state.unit1,
+                    onValueChange = {
+                        onEvent(ConvertTemperatureFormEvent.OnUnit1Changed(it))
+                    }
                 )
 
-                FieldContainer(
-                    height = 130.dp
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column(
-                        fieldContainerModifier
-                    ) {
-                        Text(text = "From")
+                    Text(text = "Value")
 
-
-                        TemperatureUnitDropDown(
-                            selectedItem = state.unit1,
-                            onValueChange = {
-                                onEvent(ConvertTemperatureFormEvent.OnUnit1Changed(it))
-                            }
+                    TextField(
+                        value = state.temperature,
+                        onValueChange = {
+                            onEvent(ConvertTemperatureFormEvent.OnTemperatureChanged(it))
+                        },
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
                         )
-
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(text = "Value")
-
-                            TextField(
-                                value = state.temperature,
-                                onValueChange = {
-                                    onEvent(ConvertTemperatureFormEvent.OnTemperatureChanged(it))
-                                },
-                                keyboardOptions = KeyboardOptions(
-                                    keyboardType = KeyboardType.Number
-                                )
-                            )
-                        }
-                    }
-
+                    )
                 }
+            }
+        }
 
 
 
-                FieldContainer(
-                    height = 100.dp
-                ) {
-                    Column(
-                        fieldContainerModifier
-                    ) {
-                        Text(text = "To")
+        FieldContainer(
+            height = 100.dp
+        ) {
+            Column(
+                fieldContainerModifier
+            ) {
+                Text(text = "To")
 
-                        TemperatureUnitDropDown(
-                            selectedItem = state.unit2,
-                            onValueChange = {
-                                onEvent(ConvertTemperatureFormEvent.OnUnit2Changed(it))
-                            }
-                        )
+                TemperatureUnitDropDown(
+                    selectedItem = state.unit2,
+                    onValueChange = {
+                        onEvent(ConvertTemperatureFormEvent.OnUnit2Changed(it))
                     }
-                }
+                )
+            }
+        }
 
 
 
 
 
-                FieldButton(
-                    modifier = Modifier.fillMaxWidth(),
-                    onClick = {
-                        onEvent(ConvertTemperatureFormEvent.Submit)
-                    }
-                ) {
-                    Text(text = "Submit")
-                }
+        FieldButton(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onEvent(ConvertTemperatureFormEvent.Submit)
+            }
+        ) {
+            Text(text = "Submit")
+        }
 
-                FieldContainer() {
-                    Column(
-                        fieldContainerModifier
-                    ) {
-                        Text(text = "Result")
-                        Text(text = state.result)
-                        Text(text = "1 Celsius = 33.8")
-                    }
-                }
-
+        FieldContainer() {
+            Column(
+                fieldContainerModifier
+            ) {
+                Text(text = "Result")
+                Text(text = state.result)
+                Text(text = "1 Celsius = 33.8")
             }
         }
 
     }
-
 }
 
 @Preview
 @Composable
-fun PreviewConvertTemperatures(){
+fun PreviewConvertTemperatures() {
     ConvertTemperaturesScreen(
         navController = rememberNavController(),
         Modifier,
         ConvertTemperatureFormState(),
         emptyFlow()
-    ){
-        when(it){
+    ) {
+        when (it) {
             is ConvertTemperatureFormEvent.OnResultChanged -> TODO()
             is ConvertTemperatureFormEvent.OnTemperatureChanged -> TODO()
             is ConvertTemperatureFormEvent.OnUnit1Changed -> TODO()
