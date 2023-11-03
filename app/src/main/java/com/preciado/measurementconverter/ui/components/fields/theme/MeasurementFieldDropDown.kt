@@ -1,7 +1,5 @@
 package com.preciado.measurementconverter.ui.components.fields.theme
 
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,16 +12,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.preciado.measurementconverter.R
-import com.preciado.measurementconverter.data.interfaces.IMeasurementUnit
+import com.preciado.measurementconverter.data.interfaces.IMeasurementType
 import com.preciado.measurementconverter.ui.components.fields.FieldDropDown
 
 @Composable
 fun MeasurementFieldDropDown(
     modifier: Modifier = Modifier,
-    dropDownList: List<IMeasurementUnit>,
-    onSelectedItem: (IMeasurementUnit) -> Unit,
+    dropDownList: List<IMeasurementType>,
+    onSelectedItem: (IMeasurementType) -> Unit,
 ) {
-    FieldDropDown<IMeasurementUnit>(
+    FieldDropDown<IMeasurementType>(
         modifier = modifier,
         dropDownList = dropDownList,
         surfaceTextFieldShape = RoundedCornerShape(topStart = 5.dp, bottomStart = 5.dp),
@@ -57,7 +55,7 @@ fun MeasurementFieldDropDown(
 fun PreviewMeasurementFieldDropDown(){
 
     val muState = remember {
-        mutableStateOf<IMeasurementUnit?>(null)
+        mutableStateOf<IMeasurementType?>(null)
     }
 
     MeasurementFieldDropDown(
