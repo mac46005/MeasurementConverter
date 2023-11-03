@@ -10,7 +10,7 @@ import com.preciado.measurementconverter.ui.components.bars.TitleBar
 import com.preciado.measurementconverter.ui.theme.MeasurementConverterTheme
 
 @Composable
-fun TopTitleScreen(
+fun MainScreen(
     modifier: Modifier = Modifier,
     subTitle: String? = null,
     content: @Composable (ColumnScope.() -> Unit)
@@ -30,7 +30,7 @@ fun TopTitleScreen(
 @Preview
 @Composable
 fun PreviewTopTitleScreen(){
-    TopTitleScreen(){
+    MainScreen(){
 
     }
 }

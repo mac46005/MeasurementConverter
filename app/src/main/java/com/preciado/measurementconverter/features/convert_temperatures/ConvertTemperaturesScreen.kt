@@ -5,11 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,13 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.preciado.measurementconverter.features.convert_temperatures.domain.use_case.ValidationEvent
-import com.preciado.measurementconverter.ui.components.bars.TitleBar
 import com.preciado.measurementconverter.ui.components.containers.FieldContainer
 import com.preciado.measurementconverter.ui.components.fields.FieldButton
 import com.preciado.measurementconverter.ui.components.fields.TemperatureUnitDropDown
 import com.preciado.measurementconverter.ui.components.fields.theme.TextField
-import com.preciado.measurementconverter.ui.components.screens.TopTitleScreen
-import com.preciado.measurementconverter.ui.theme.MeasurementConverterTheme
+import com.preciado.measurementconverter.ui.components.screens.MainScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
@@ -66,7 +61,7 @@ fun ConvertTemperaturesScreen(
 
 
 
-    TopTitleScreen(
+    MainScreen(
         modifier = Modifier.fillMaxSize(),
         subTitle = "Temperatures"
     ) {
