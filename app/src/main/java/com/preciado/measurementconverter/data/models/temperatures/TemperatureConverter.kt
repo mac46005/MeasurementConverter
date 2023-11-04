@@ -1,6 +1,10 @@
 package com.preciado.measurementconverter.data.models.temperatures
 
 import com.preciado.measurementconverter.data.interfaces.IMeasurementConverter
+import com.preciado.measurementconverter.data.models.temperatures.units.Celsius
+import com.preciado.measurementconverter.data.models.temperatures.units.Fahrenheit
+import com.preciado.measurementconverter.data.models.temperatures.units.Kelvin
+import com.preciado.measurementconverter.data.models.temperatures.units.TemperatureUnit
 import javax.inject.Inject
 
 class TemperatureConverter @Inject constructor(): IMeasurementConverter<TemperatureUnit> {

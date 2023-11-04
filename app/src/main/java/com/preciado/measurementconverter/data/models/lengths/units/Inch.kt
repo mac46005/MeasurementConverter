@@ -1,4 +1,6 @@
-package com.preciado.measurementconverter.data.models.lengths
+package com.preciado.measurementconverter.data.models.lengths.units
+
+import com.preciado.measurementconverter.data.models.lengths.LengthUnit
 
 class Inch: LengthUnit("Inch") {
     override fun toMillimeter(): Millimeter {

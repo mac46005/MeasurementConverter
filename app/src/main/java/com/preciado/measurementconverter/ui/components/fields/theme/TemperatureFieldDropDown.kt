@@ -2,10 +2,10 @@ package com.preciado.measurementconverter.ui.components.fields.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.preciado.measurementconverter.data.models.temperatures.Celsius
-import com.preciado.measurementconverter.data.models.temperatures.Fahrenheit
-import com.preciado.measurementconverter.data.models.temperatures.Kelvin
-import com.preciado.measurementconverter.data.models.temperatures.TemperatureUnit
+import com.preciado.measurementconverter.data.models.temperatures.units.Celsius
+import com.preciado.measurementconverter.data.models.temperatures.units.Fahrenheit
+import com.preciado.measurementconverter.data.models.temperatures.units.Kelvin
+import com.preciado.measurementconverter.data.models.temperatures.units.TemperatureUnit
 
 @Composable
 fun TemperatureFieldDropDown(

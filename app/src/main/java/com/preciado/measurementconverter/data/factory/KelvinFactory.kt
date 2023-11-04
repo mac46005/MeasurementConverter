@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.factory
 
-import com.preciado.measurementconverter.data.models.temperatures.Kelvin
+import com.preciado.measurementconverter.data.models.temperatures.units.Kelvin
 import javax.inject.Inject
 
 class KelvinFactory @Inject constructor() : IFactory<Kelvin> {

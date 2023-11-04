@@ -1,9 +1,9 @@
 package com.preciado.measurementconverter.data.factory
 
-import com.preciado.measurementconverter.data.models.temperatures.Celsius
-import com.preciado.measurementconverter.data.models.temperatures.Fahrenheit
-import com.preciado.measurementconverter.data.models.temperatures.Kelvin
-import com.preciado.measurementconverter.data.models.temperatures.TemperatureUnit
+import com.preciado.measurementconverter.data.models.temperatures.units.Celsius
+import com.preciado.measurementconverter.data.models.temperatures.units.Fahrenheit
+import com.preciado.measurementconverter.data.models.temperatures.units.Kelvin
+import com.preciado.measurementconverter.data.models.temperatures.units.TemperatureUnit
 import com.preciado.measurementconverter.data.models.temperatures.TemperatureUnits
 import javax.inject.Inject
 

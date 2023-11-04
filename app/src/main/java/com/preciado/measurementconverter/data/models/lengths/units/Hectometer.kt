@@ -1,74 +1,76 @@
-package com.preciado.measurementconverter.data.models.lengths
+package com.preciado.measurementconverter.data.models.lengths.units
 
-class NauticalMile: LengthUnit("Nautical Mile") {
+import com.preciado.measurementconverter.data.models.lengths.LengthUnit
+
+class Hectometer: LengthUnit("Hectometer"){
     override fun toMillimeter(): Millimeter {
         val millimeter = Millimeter()
-        millimeter.value = value * 1852000
+        millimeter.value = value * 100000
         return millimeter
     }
 
     override fun toCentimeter(): Centimeter {
         val centimeter = Centimeter()
-        centimeter.value = value * 185200
+        centimeter.value = value * 10000
         return centimeter
     }
 
     override fun toDecimeter(): Decimeter {
         val decimeter = Decimeter()
-        decimeter.value = value * 18520
+        decimeter.value = value * 1000
         return decimeter
     }
 
     override fun toMeter(): Meter {
         val meter = Meter()
-        meter.value = value * 1852
+        meter.value = value * 100
         return meter
     }
 
     override fun toDecameter(): Decameter {
         val decameter = Decameter()
-        decameter.value = value * 185.2
+        decameter.value = value * 10
         return decameter
     }
 
     override fun toHectometer(): Hectometer {
-        val hectometer = Hectometer()
-        hectometer.value = value * 18.52
-        return hectometer
+        return this
     }
 
     override fun toKilometer(): Kilometer {
         val kilometer = Kilometer()
-        kilometer.value = value * 1.852
+        kilometer.value = value / 10
         return kilometer
     }
 
-
     override fun toInch(): Inch {
         val inch = Inch()
-        inch.value = value * 72910
+        inch.value = value *  3937
         return inch
     }
 
     override fun toFoot(): Foot {
         val foot = Foot()
-        foot.value = value * 6076
+        foot.value = value * 328.1
         return foot
     }
 
     override fun toMile(): Mile {
         val mile = Mile()
-        mile.value = value * 1.151
+        mile.value = value / 16.093
         return mile
     }
 
     override fun toYard(): Yard {
         val yard = Yard()
-        yard.value = value * 2025
+        yard.value = value * 109.4
         return yard
     }
 
     override fun toNauticalMile(): NauticalMile {
-        return this
+        val nauticalMile = NauticalMile()
+        nauticalMile.value = value / 18.52
+        return nauticalMile
     }
+
 }

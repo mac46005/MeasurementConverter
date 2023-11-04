@@ -1,6 +1,6 @@
 package com.preciado.measurementconverter.data.factory
 
-import com.preciado.measurementconverter.data.models.temperatures.Celsius
+import com.preciado.measurementconverter.data.models.temperatures.units.Celsius
 import javax.inject.Inject
 
 class CelsiusFactory @Inject constructor(): IFactory<Celsius> {
