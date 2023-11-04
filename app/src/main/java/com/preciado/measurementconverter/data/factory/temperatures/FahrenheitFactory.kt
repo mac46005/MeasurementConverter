@@ -1,9 +1,10 @@
-package com.preciado.measurementconverter.data.factory
+package com.preciado.measurementconverter.data.factory.temperatures
 
+import com.preciado.measurementconverter.data.factory.IFactory
 import com.preciado.measurementconverter.data.models.temperatures.units.Fahrenheit
 import javax.inject.Inject
 
-class FahrenheitFactory @Inject constructor(): IFactory<Fahrenheit> {
+object FahrenheitFactory : IFactory<Fahrenheit> {
     override fun build(vararg params: Any?): Fahrenheit {
         return Fahrenheit()
     }

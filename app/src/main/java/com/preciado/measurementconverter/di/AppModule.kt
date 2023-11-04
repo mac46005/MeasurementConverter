@@ -1,9 +1,9 @@
 package com.preciado.measurementconverter.di
 
-import com.preciado.measurementconverter.data.factory.CelsiusFactory
-import com.preciado.measurementconverter.data.factory.FahrenheitFactory
-import com.preciado.measurementconverter.data.factory.KelvinFactory
-import com.preciado.measurementconverter.data.factory.TemperatureUnitFactory
+import com.preciado.measurementconverter.data.factory.temperatures.CelsiusFactory
+import com.preciado.measurementconverter.data.factory.temperatures.FahrenheitFactory
+import com.preciado.measurementconverter.data.factory.temperatures.KelvinFactory
+import com.preciado.measurementconverter.data.factory.temperatures.TemperatureUnitFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,19 +16,19 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesFahrenheitFactory(): FahrenheitFactory{
+    fun providesFahrenheitFactory(): FahrenheitFactory {
         return FahrenheitFactory()
     }
 
     @Provides
     @Singleton
-    fun providesCelsiusFactory(): CelsiusFactory{
+    fun providesCelsiusFactory(): CelsiusFactory {
         return CelsiusFactory()
     }
 
     @Provides
     @Singleton
-    fun providesKelvinFactory(): KelvinFactory{
+    fun providesKelvinFactory(): KelvinFactory {
         return KelvinFactory()
     }
 
@@ -38,7 +38,7 @@ class AppModule {
         fahrenheitFactory: FahrenheitFactory,
         celsiusFactory: CelsiusFactory,
         kelvinFactory: KelvinFactory
-    ): TemperatureUnitFactory{
+    ): TemperatureUnitFactory {
         return TemperatureUnitFactory(
             fahrenheitFactory,
             celsiusFactory,

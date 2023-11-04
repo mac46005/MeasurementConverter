@@ -3,13 +3,10 @@ package com.preciado.measurementconverter.features.convert_temperatures
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.preciado.measurementconverter.data.factory.TemperatureUnitFactory
+import com.preciado.measurementconverter.data.factory.temperatures.TemperatureUnitFactory
 import com.preciado.measurementconverter.data.models.temperatures.TemperatureConverter
-import com.preciado.measurementconverter.data.models.temperatures.TemperatureUnits
 import com.preciado.measurementconverter.features.convert_temperatures.domain.use_case.ValidateTemperature
 import com.preciado.measurementconverter.features.convert_temperatures.domain.use_case.ValidationEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
